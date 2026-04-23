@@ -6,6 +6,8 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import FAQAccordion from '@/components/FAQAccordion';
+
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -215,44 +217,16 @@ export default function Services() {
         </section>
 
         {/* FAQ */}
-        <section className="mt-16" data-reveal>
-          <div className="card p-8 md:p-10">
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground headline">FAQ</h2>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  q: 'Do you do fixed-price projects?',
-                  a: 'This template supports either model. Many teams prefer fixed scope + clear milestones for small builds, and weekly for ongoing work.',
-                },
-                {
-                  q: 'Do you support reduced-motion and accessibility?',
-                  a: 'Yes—motion should improve comprehension, with fallbacks for `prefers-reduced-motion` and keyboard-first interaction.',
-                },
-                {
-                  q: 'Can you work with an existing design system?',
-                  a: 'Absolutely. I can extend tokens/components or help you establish conventions if you don’t have one yet.',
-                },
-                {
-                  q: 'What do you need from me to start?',
-                  a: 'A goal, a target user, examples you like, and the main constraints (deadline, platform, budget).',
-                },
-              ].map((f) => (
-                <div key={f.q} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                  <div className="text-lg font-semibold text-foreground">{f.q}</div>
-                  <p className="text-gray-400 mt-2">{f.a}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <Link href="/contact" className="btn-primary">
-                Contact
-              </Link>
-              <Link href="/work" className="btn-ghost">
-                Browse work
-              </Link>
-            </div>
-          </div>
-        </section>
+        <FAQAccordion />
+
+        <div className="mt-16 flex flex-col sm:flex-row gap-3 justify-center" data-reveal>
+          <Link href="/contact" className="btn-primary">
+            Start a project
+          </Link>
+          <Link href="/work" className="btn-ghost">
+            Browse work
+          </Link>
+        </div>
       </div>
     </div>
   );
