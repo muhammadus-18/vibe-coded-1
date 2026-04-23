@@ -1,0 +1,197 @@
+---
+title: "Mastering GSAP Animations"
+date: "2024-03-20"
+excerpt: "Learn advanced GSAP techniques for creating stunning web animations with ScrollTrigger, timelines, and performance optimization."
+coverImage: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=1200&h=800&fit=crop"
+---
+
+# Mastering GSAP Animations
+
+GSAP (GreenSock Animation Platform) is the industry standard for high-performance web animations. In this comprehensive guide, we'll explore advanced techniques for creating stunning animations that captivate users.
+
+## Why Choose GSAP?
+
+GSAP offers several advantages over other animation libraries:
+
+- **Performance**: Optimized for 60fps animations
+- **Compatibility**: Works across all browsers
+- **Flexibility**: Animate any JavaScript property
+- **Powerful Timeline System**: Complex sequences made simple
+
+## Core Concepts
+
+### Understanding GSAP Timelines
+
+Timelines are the backbone of complex animations:
+
+```javascript
+const tl = gsap.timeline({
+  repeat: -1,
+  yoyo: true,
+});
+
+tl.to('.element', {
+  x: 100,
+  duration: 1,
+})
+.to('.element', {
+  rotation: 360,
+  duration: 1,
+}, '-=0.5'); // Start 0.5s before previous animation ends
+```
+
+### ScrollTrigger Magic
+
+ScrollTrigger creates scroll-based animations:
+
+```javascript
+gsap.to('.parallax-element', {
+  y: -100,
+  scrollTrigger: {
+    trigger: '.section',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: 1,
+  },
+});
+```
+
+## Advanced Techniques
+
+### Performance Optimization
+
+To maintain 60fps animations:
+
+1. **Use `will-change` strategically**
+2. **Animate transform properties** (x, y, scale, rotation)
+3. **Avoid animating layout properties** (width, height, margin)
+4. **Use `gsap.set()` for initial positioning**
+
+```css
+.optimized-element {
+  will-change: transform;
+  transform: translate3d(0, 0, 0); /* Hardware acceleration */
+}
+```
+
+### Stagger Animations
+
+Create beautiful sequences with stagger:
+
+```javascript
+gsap.from('.card', {
+  y: 50,
+  opacity: 0,
+  duration: 1,
+  stagger: {
+    each: 0.1,
+    from: 'random',
+  },
+});
+```
+
+## Real-World Examples
+
+### Hero Section Animation
+
+```javascript
+const heroTimeline = gsap.timeline();
+
+heroTimeline
+  .from('.hero-title', {
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
+  })
+  .from('.hero-subtitle', {
+    y: 50,
+    opacity: 0,
+    duration: 0.8,
+  }, '-=0.5')
+  .from('.hero-button', {
+    scale: 0,
+    opacity: 0,
+    duration: 0.6,
+    ease: 'back.out(1.7)',
+  }, '-=0.3');
+```
+
+### Magnetic Button Effect
+
+```javascript
+const button = document.querySelector('.magnetic-button');
+
+button.addEventListener('mousemove', (e) => {
+  const rect = button.getBoundingClientRect();
+  const x = e.clientX - rect.left - rect.width / 2;
+  const y = e.clientY - rect.top - rect.height / 2;
+  
+  gsap.to(button, {
+    x: x * 0.3,
+    y: y * 0.3,
+    duration: 0.3,
+    ease: 'power2.out',
+  });
+});
+
+button.addEventListener('mouseleave', () => {
+  gsap.to(button, {
+    x: 0,
+    y: 0,
+    duration: 0.3,
+    ease: 'power2.out',
+  });
+});
+```
+
+## Best Practices
+
+### Animation Principles
+
+Follow these principles for effective animations:
+
+1. **Purpose**: Every animation should have a purpose
+2. **Timing**: Use appropriate durations (0.3-1s for UI, 2-3s for hero)
+3. **Easing**: Choose easing that matches the action
+4. **Performance**: Always test on lower-end devices
+
+### Accessibility Considerations
+
+Make animations accessible:
+
+```javascript
+// Respect prefers-reduced-motion
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (!prefersReducedMotion.matches) {
+  // Run animations
+  gsap.to('.element', { opacity: 1, duration: 1 });
+} else {
+  // Provide alternative
+  gsap.set('.element', { opacity: 1 });
+}
+```
+
+## Tools and Resources
+
+### Essential Plugins
+
+- **ScrollTrigger**: Scroll-based animations
+- **TextPlugin**: Advanced text animations
+- **DrawSVGPlugin**: SVG path animations
+- **MorphSVGPlugin**: Shape morphing
+
+### Performance Monitoring
+
+Use these tools to monitor animation performance:
+
+- Chrome DevTools Performance tab
+- GSAP DevTools (Chrome extension)
+- Lighthouse animation scoring
+
+## Conclusion
+
+Mastering GSAP opens up endless possibilities for creating engaging web experiences. Start with simple animations, gradually incorporate more complex techniques, and always prioritize performance and user experience.
+
+Remember: Good animation enhances the user experience without overwhelming it. Use these techniques thoughtfully to create animations that serve your content and delight your users.
