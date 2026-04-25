@@ -4,7 +4,7 @@ import { projects } from '@/lib/projects';
 export default function sitemap() {
   const baseUrl = 'https://gsap-portfolio.vercel.app';
   
-  const routes = ['', '/work', '/blog', '/services', '/lab'].map((route) => ({
+  const routes = ['', '/work', '/blog', '/services', '/about', '/contact'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }));

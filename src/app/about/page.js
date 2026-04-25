@@ -3,6 +3,9 @@
 import Link from 'next/link';
 import LogoMarquee from '@/components/LogoMarquee';
 
+// Metadata must be exported from a server component; About is a client component.
+// Consider creating a separate server wrapper if SEO for this page is critical.
+
 export default function About() {
   return (
     <div className="min-h-screen bg-background">
@@ -49,13 +52,13 @@ export default function About() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-400 leading-relaxed">
                 <p>
-                  With over 5 years of experience in fullstack development, I’ve realized that 
-                  the most successful products aren't just the ones that work—they're the ones 
-                  that people actually enjoy using. I specialize in taking raw ideas and 
+                  With over 5 years of experience in fullstack development, I've realized that 
+                  the most successful products aren't just the ones that work—they're the ones
+                  that people actually enjoy using. I specialize in taking raw ideas and
                   transforming them into polished, performant digital realities.
                 </p>
                 <p>
-                  My toolkit is built for speed and scale. Whether it's crafting intricate 
+                  My toolkit is built for speed and scale. Whether it's crafting intricate
                   GSAP animations or architecting complex Next.js systems, I ensure that 
                   performance is never sacrificed for aesthetics.
                 </p>

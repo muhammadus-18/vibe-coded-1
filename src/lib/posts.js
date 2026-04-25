@@ -5,6 +5,8 @@ import matter from 'gray-matter';
 
 const POSTS_DIR = path.join(process.cwd(), 'posts');
 
+let cachedPosts = null;
+
 function readPostFile(slug) {
   const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
   const raw = fs.readFileSync(filePath, 'utf8');
@@ -21,13 +23,16 @@ function readPostFile(slug) {
 }
 
 export function getAllPosts() {
+  if (cachedPosts) return cachedPosts;
+
   const files = fs.existsSync(POSTS_DIR) ? fs.readdirSync(POSTS_DIR) : [];
   const slugs = files
     .filter((f) => f.endsWith('.mdx'))
     .map((f) => f.replace(/\.mdx$/, ''));
 
   const posts = slugs.map((slug) => readPostFile(slug));
-  return posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  cachedPosts = posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  return cachedPosts;
 }
 
 export function getPostData(slug) {

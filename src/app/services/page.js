@@ -12,6 +12,9 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+// Metadata must be exported from a server component; Services is a client component.
+// Consider creating a separate server wrapper if SEO for this page is critical.
+
 export default function Services() {
   const containerRef = useRef(null);
   const parallaxContainerRefs = useRef([]);

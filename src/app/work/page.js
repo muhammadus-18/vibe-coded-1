@@ -4,6 +4,11 @@ import Link from 'next/link';
 import MagneticButton from '@/components/MagneticButton';
 import ProjectGrid from '@/components/ProjectGrid';
 
+export const metadata = {
+  title: 'Work',
+  description: 'A curated set of builds with a focus on performance, motion, and clean UX.',
+};
+
 export default function Work() {
   return (
     <div className="bg-background">

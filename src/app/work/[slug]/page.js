@@ -63,9 +63,9 @@ export default async function WorkDetail({ params }) {
               </p>
               <div className="prose prose-invert prose-lg max-w-none text-gray-400">
                 <p>
-                  This project was a deep dive into {project.tags[0]} and {project.tags[1]}. 
-                  We focused on creating a system that didn't just meet the technical requirements, 
-                  but set a new standard for how users interact with {project.title}.
+                This project was a deep dive into {project.tags[0]} and {project.tags[1]}.
+                We focused on creating a system that didn't just meet the technical requirements,
+                but set a new standard for how users interact with {project.title}.
                 </p>
               </div>
             </section>
@@ -106,6 +106,7 @@ export default async function WorkDetail({ params }) {
                 <a 
                   href={project.links.live} 
                   target="_blank" 
+                  rel="noopener noreferrer"
                   className="w-full btn-primary justify-center py-4"
                 >
                   Visit Live Site
@@ -115,6 +116,7 @@ export default async function WorkDetail({ params }) {
                 <a 
                   href={project.links.repo} 
                   target="_blank" 
+                  rel="noopener noreferrer"
                   className="w-full btn-ghost justify-center py-4"
                 >
                   View Repository

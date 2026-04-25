@@ -29,7 +29,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const posts = getAllPosts().map(p => ({ title: p.title, slug: p.slug }));
+  const allPosts = getAllPosts();
+  const posts = allPosts.map(p => ({ title: p.title, slug: p.slug }));
   const minimalProjects = projects.map(p => ({ title: p.title, id: p.id }));
 
   return (

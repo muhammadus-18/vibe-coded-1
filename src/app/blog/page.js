@@ -2,6 +2,11 @@ import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import Image from 'next/image';
 
+export const metadata = {
+  title: 'Blog',
+  description: 'Thoughts, tutorials, and insights on web development and design.',
+};
+
 export default function Blog() {
   const posts = getAllPosts();
 
@@ -29,6 +34,7 @@ export default function Blog() {
             >
               {/* Image Container */}
               <div className="relative aspect-video overflow-hidden">
+                {post.coverImage ? (
                 <Image
                   src={post.coverImage}
                   alt={post.title}
@@ -36,6 +42,9 @@ export default function Blog() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 backface-hidden group-hover:scale-[1.02]"
                 />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-400/18 via-accent-500/10 to-black/0" />
+              )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 transition-opacity duration-300" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-white text-xl font-bold line-clamp-2">
