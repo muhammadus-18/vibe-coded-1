@@ -2,6 +2,7 @@
 
 import { useState, useLayoutEffect, useRef, useEffect } from 'react';
 import gsap from 'gsap';
+// @ts-ignore
 import { Flip } from 'gsap/Flip';
 import Link from 'next/link';
 
