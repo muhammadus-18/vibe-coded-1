@@ -6,16 +6,16 @@ export default function CaseStudySections({ project }) {
   const screens = project.caseStudy?.screens ?? [];
 
   return (
-    <div className="space-y-32">
+    <div className="space-y-40">
       
       {/* 🛠️ Responsibilities Section */}
       <section data-reveal>
-        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-[0.4em] mb-12">Responsibilities</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden">
+        <h3 className="font-mono text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-12">Responsibilities</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-surface-bright/20 border border-outline-variant/30 rounded-[12px] overflow-hidden">
           {responsibilities.map((r, i) => (
-            <div key={i} className="bg-background p-8 md:p-10 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-500 mt-2 shrink-0" />
-              <span className="text-gray-300 font-medium leading-relaxed">{r}</span>
+            <div key={i} className="bg-surface/80 p-8 md:p-10 flex items-start gap-4 hover:bg-surface-bright/40 transition-colors">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+              <span className="font-sans text-on-surface-variant font-medium leading-relaxed">{r}</span>
             </div>
           ))}
         </div>
@@ -23,18 +23,18 @@ export default function CaseStudySections({ project }) {
 
       {/* 🚀 Impact Section */}
       <section data-reveal>
-        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-[0.4em] mb-12 text-center">Outcome & Impact</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <h3 className="font-mono text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-12 text-center">Outcome & Impact</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {metrics.map((m, i) => (
-            <div key={i} className="p-10 rounded-[2rem] bg-white/[0.03] border border-white/10 flex flex-col items-center text-center group hover:bg-accent-500/[0.03] hover:border-accent-500/20 transition-all duration-500">
-              <div className="text-5xl font-black text-white mb-2 group-hover:scale-110 transition-transform">
+            <div key={i} className="p-10 rounded-[12px] bg-surface-bright/20 border border-outline-variant/30 flex flex-col items-center text-center group hover:bg-surface-bright/40 hover:border-primary/50 transition-all duration-500">
+              <div className="font-display text-5xl md:text-6xl font-extrabold text-foreground mb-4 group-hover:scale-105 transition-transform tracking-tight">
                 {m.value}
               </div>
-              <div className="text-xs font-bold text-accent-500 uppercase tracking-widest">
+              <div className="font-mono text-xs font-bold text-primary uppercase tracking-widest">
                 {m.label}
               </div>
               {m.note && (
-                <p className="mt-4 text-xs text-gray-500 leading-relaxed max-w-[180px]">
+                <p className="mt-4 font-sans text-xs text-on-surface-variant/70 leading-relaxed max-w-[180px]">
                   {m.note}
                 </p>
               )}
@@ -45,16 +45,16 @@ export default function CaseStudySections({ project }) {
 
       {/* 📱 Screens Section (Staggered Gallery) */}
       <section data-reveal>
-        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-[0.4em] mb-12">Visual Breakdown</h3>
-        <div className="grid grid-cols-1 gap-12">
+        <h3 className="font-mono text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-12">Visual Breakdown</h3>
+        <div className="grid grid-cols-1 gap-24">
           {screens.map((s, i) => (
             <figure 
               key={i} 
-              className={`relative w-full rounded-[2rem] overflow-hidden border border-white/5 bg-white/[0.02] ${
-                i % 2 === 0 ? 'md:pr-24' : 'md:pl-24'
+              className={`relative w-full rounded-[12px] overflow-hidden border border-outline-variant/20 bg-surface-bright/20 p-4 ${
+                i % 2 === 0 ? 'md:pr-24 lg:w-10/12' : 'md:pl-24 lg:w-10/12 lg:ml-auto'
               }`}
             >
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem]">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-[8px] bg-background">
                 <Image
                   src={s.src}
                   alt={s.alt ?? 'Project Screen'}
@@ -63,8 +63,8 @@ export default function CaseStudySections({ project }) {
                 />
               </div>
               {s.caption && (
-                <figcaption className="p-8 text-center">
-                  <span className="text-sm text-gray-400 italic">
+                <figcaption className="p-6 text-center">
+                  <span className="font-sans text-sm text-on-surface-variant italic">
                     — {s.caption}
                   </span>
                 </figcaption>

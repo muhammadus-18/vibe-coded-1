@@ -15,17 +15,17 @@ export default function Work() {
       {/* Header Section */}
       <div className="min-h-[70vh] flex items-center justify-center">
         <div className="text-center container-page py-20">
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-8" data-reveal>
+          <h1 className="font-display text-5xl md:text-7xl font-extrabold text-foreground mb-8 tracking-tighter uppercase" data-reveal>
             Featured Work
           </h1>
-          <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
+          <p className="font-sans text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
             A curated set of builds with a focus on performance, motion, and clean UX.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center" data-reveal>
-            <MagneticButton className="btn-primary" href="/contact" max={14}>
+            <MagneticButton className="btn-primary font-mono uppercase tracking-wider text-xs" href="/contact" max={14}>
               Start a project
             </MagneticButton>
-            <MagneticButton className="btn-ghost" href="/services" max={12}>
+            <MagneticButton className="btn-ghost font-mono uppercase tracking-wider text-xs" href="/services" max={12}>
               View services
             </MagneticButton>
           </div>
@@ -39,8 +39,8 @@ export default function Work() {
       <section className="container-page py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5" data-reveal>
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground headline">What you’ll see</h2>
-            <p className="text-gray-400 mt-3">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground headline tracking-tight">What you’ll see</h2>
+            <p className="font-sans text-on-surface-variant mt-3 leading-relaxed">
               Each case study in this template uses a consistent structure so it’s easy to skim and compare.
             </p>
           </div>
@@ -52,8 +52,8 @@ export default function Work() {
               { t: 'Impact', d: 'Metrics and outcomes (template placeholders you can replace).' },
             ].map((x) => (
               <div key={x.t} className="card p-6" data-reveal>
-                <div className="text-lg font-semibold text-foreground">{x.t}</div>
-                <p className="text-gray-400 mt-2">{x.d}</p>
+                <div className="font-display text-lg font-bold text-foreground tracking-tight">{x.t}</div>
+                <p className="font-sans text-on-surface-variant mt-2 leading-relaxed">{x.d}</p>
               </div>
             ))}
           </div>
@@ -64,8 +64,8 @@ export default function Work() {
       <section className="container-page pb-20">
         <div className="flex items-end justify-between gap-6 mb-8" data-reveal>
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground headline">Browse projects</h2>
-            <p className="text-gray-400 mt-2">A clean grid layout (nice for accessibility and future SEO).</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground headline tracking-tight">Browse projects</h2>
+            <p className="font-sans text-on-surface-variant mt-2 leading-relaxed">A clean grid layout (nice for accessibility and future SEO).</p>
           </div>
         </div>
         <ProjectGrid projects={projects} />

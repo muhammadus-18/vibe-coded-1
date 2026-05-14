@@ -96,17 +96,17 @@ export default function Services() {
       <div className="container-page">
         {/* Header */}
         <div className="text-center mb-16" data-reveal>
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6">
+          <h1 className="font-display text-5xl md:text-7xl font-extrabold text-foreground mb-6 tracking-tighter uppercase">
             Services
           </h1>
-          <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
+          <p className="font-sans text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
             A modular service offering for a high-end portfolio template. Swap copy, pricing, and packages to fit your brand.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary font-mono uppercase tracking-wider text-xs">
               Start a project
             </Link>
-            <Link href="/work" className="btn-ghost">
+            <Link href="/work" className="btn-ghost font-mono uppercase tracking-wider text-xs">
               See case studies
             </Link>
           </div>
@@ -115,17 +115,17 @@ export default function Services() {
         {/* Parallax feature strip (no pin) */}
         <section className="mb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch" ref={containerRef}>
           <div className="lg:col-span-5 card p-8 md:p-10" data-reveal>
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-tight">
               Motion that supports the story.
             </h2>
-            <p className="mt-4 text-gray-400">
+            <p className="mt-4 font-sans text-on-surface-variant leading-relaxed">
               Subtle depth, clean reveals, and scroll effects that stay at 60fps. No hijacking, no heavy filters.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {['ScrollTrigger', 'Lenis', 'Accessibility', 'Reduced motion'].map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 bg-white/5 text-gray-300 border border-white/10 rounded-full text-xs"
+                  className="font-mono px-3 py-1 bg-surface-bright/20 text-on-surface border border-outline-variant/30 rounded-xl text-[11px] uppercase tracking-widest"
                 >
                   {t}
                 </span>
@@ -157,8 +157,8 @@ export default function Services() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <div className="text-lg font-semibold text-foreground">{item.title}</div>
-                    <div className="mt-1 text-xs text-gray-300">Passive parallax • no pin</div>
+                    <div className="font-display text-lg font-bold text-foreground tracking-tight">{item.title}</div>
+                    <div className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">Passive parallax • no pin</div>
                   </div>
                 </div>
               </div>
@@ -175,16 +175,16 @@ export default function Services() {
               data-reveal
               data-reveal-delay={String(Math.min(0.18, index * 0.03))}
             >
-              <h3 className="text-2xl font-bold text-foreground mb-4">
+              <h3 className="font-display text-2xl font-bold text-foreground mb-4 tracking-tight">
                 {service.title}
               </h3>
-              <p className="text-gray-400">
+              <p className="font-sans text-on-surface-variant leading-relaxed">
                 {service.description}
               </p>
-              <ul className="mt-5 space-y-2 text-sm text-gray-400">
+              <ul className="mt-5 space-y-2 font-sans text-sm text-on-surface-variant leading-relaxed">
                 {service.bullets.map((b) => (
                   <li key={b} className="flex gap-2">
-                    <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-accent-400" />
+                    <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-primary-container shrink-0" />
                     <span>{b}</span>
                   </li>
                 ))}
@@ -196,8 +196,8 @@ export default function Services() {
         {/* Process */}
         <section className="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-5" data-reveal>
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground headline">Process</h2>
-            <p className="text-gray-400 mt-3">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground tracking-tight">Process</h2>
+            <p className="font-sans text-on-surface-variant mt-3 leading-relaxed">
               A clear, repeatable approach that keeps scope honest and quality high—perfect for a template site.
             </p>
           </div>
@@ -209,11 +209,11 @@ export default function Services() {
               { t: 'Iterate', d: 'Tight feedback loops and fixes that stick (docs + reusable patterns).' },
             ].map((s) => (
               <div key={s.t} className="card p-6" data-reveal>
-                <div className="eyebrow">
-                  <span className="inline-block w-2 h-2 rounded-full bg-gradient-to-r from-accent-300 to-accent-500" />
+                <div className="font-mono text-xs uppercase tracking-widest text-on-surface flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-primary-container" />
                   {s.t}
                 </div>
-                <p className="text-gray-400 mt-3">{s.d}</p>
+                <p className="font-sans text-on-surface-variant mt-3 leading-relaxed">{s.d}</p>
               </div>
             ))}
           </div>
@@ -223,10 +223,10 @@ export default function Services() {
         <FAQAccordion />
 
         <div className="mt-16 flex flex-col sm:flex-row gap-3 justify-center" data-reveal>
-          <Link href="/contact" className="btn-primary">
+          <Link href="/contact" className="btn-primary font-mono uppercase tracking-wider text-xs">
             Start a project
           </Link>
-          <Link href="/work" className="btn-ghost">
+          <Link href="/work" className="btn-ghost font-mono uppercase tracking-wider text-xs">
             Browse work
           </Link>
         </div>

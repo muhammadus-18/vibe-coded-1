@@ -67,7 +67,7 @@ function FAQItem({ question, answer, index }) {
 
   return (
     <div 
-      className="border-b border-white/10 last:border-0 group"
+      className="border-b border-outline-variant/30 last:border-0 group"
       data-reveal
       data-reveal-delay={index * 0.05}
     >
@@ -75,12 +75,12 @@ function FAQItem({ question, answer, index }) {
         onClick={toggleAccordion}
         className="w-full py-6 flex items-center justify-between text-left transition-colors"
       >
-        <span className="text-lg md:text-xl font-bold text-gray-300 group-hover:text-white transition-colors">
+        <span className="font-display text-lg md:text-xl font-bold text-on-surface group-hover:text-foreground transition-colors tracking-tight">
           {question}
         </span>
         <div 
           ref={iconRef}
-          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-accent-500/10 group-hover:border-accent-500/30 transition-all"
+          className="w-8 h-8 rounded-full bg-surface-bright/20 border border-outline-variant/30 flex items-center justify-center shrink-0 group-hover:bg-primary-container/10 group-hover:border-primary-container/30 transition-all text-on-surface group-hover:text-primary-container"
         >
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 1V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -93,7 +93,7 @@ function FAQItem({ question, answer, index }) {
         ref={contentRef}
         className="h-0 overflow-hidden opacity-0"
       >
-        <p className="text-gray-400 text-lg leading-relaxed pb-6 max-w-3xl">
+        <p className="font-sans text-on-surface-variant text-lg leading-relaxed pb-6 max-w-3xl">
           {answer}
         </p>
       </div>
@@ -105,8 +105,8 @@ export default function FAQAccordion() {
   return (
     <section className="mt-24 max-w-4xl mx-auto">
       <div className="text-center mb-12" data-reveal>
-        <h2 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-tighter">
-          Frequently <br /> <span className="text-gray-600">Asked Questions</span>
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tighter">
+          Frequently <br /> <span className="text-outline-variant">Asked Questions</span>
         </h2>
       </div>
 

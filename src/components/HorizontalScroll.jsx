@@ -107,23 +107,23 @@ export default function HorizontalScroll({ projects }) {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                   </div>
                   <div className="p-8">
-                    <h2 className="text-3xl font-bold text-foreground mb-4">
+                    <h2 className="font-display text-3xl font-bold text-foreground mb-4 tracking-tight">
                       {project.title}
                     </h2>
-                    <p className="text-lg text-gray-400 mb-6">
+                    <p className="font-sans text-lg text-on-surface-variant mb-6 leading-relaxed">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-3 py-1 bg-white/5 text-gray-300 border border-white/10 rounded-full text-sm"
+                          className="font-mono px-3 py-1 bg-surface-bright/20 text-on-surface border border-outline-variant/30 rounded-xl text-[11px] uppercase tracking-widest"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <Link className="btn-primary" href={`/work/${project.id}`}>
+                    <Link className="btn-primary font-mono uppercase tracking-wider text-xs" href={`/work/${project.id}`}>
                       View case study
                     </Link>
                   </div>

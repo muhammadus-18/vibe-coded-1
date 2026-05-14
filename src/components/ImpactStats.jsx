@@ -63,9 +63,9 @@ export default function ImpactStats() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 border-y border-white/5 bg-white/[0.02]">
+    <section ref={sectionRef} className="py-40 border-y border-outline-variant/30 bg-surface-bright/10">
       <div className="container-page">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-16 md:gap-12 lg:px-12">
           {stats.map((stat, i) => (
             <div 
               key={i} 
@@ -73,14 +73,14 @@ export default function ImpactStats() {
               className="text-center group"
             >
               <div className="flex items-baseline justify-center gap-1">
-                <span className="stat-value text-5xl md:text-7xl font-black text-white tracking-tighter">
+                <span className="stat-value font-display text-5xl md:text-7xl font-extrabold text-foreground tracking-tighter">
                   0
                 </span>
-                <span className="text-3xl md:text-4xl font-bold text-accent-500">
+                <span className="font-display text-3xl md:text-4xl font-bold text-primary">
                   {stat.suffix}
                 </span>
               </div>
-              <p className="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-[0.2em] mt-4 group-hover:text-accent-400 transition-colors">
+              <p className="font-mono text-xs md:text-sm font-bold text-on-surface-variant uppercase tracking-widest mt-6 group-hover:text-primary transition-colors">
                 {stat.label}
               </p>
             </div>

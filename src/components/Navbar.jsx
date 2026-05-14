@@ -36,11 +36,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-lg font-semibold tracking-tight text-foreground">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 via-accent-400 to-accent-500">
-                GSAP
-              </span>{' '}
-              Portfolio
+            <Link href="/" className="font-display text-2xl font-bold tracking-tight text-foreground">
+              Ava Chen
             </Link>
           </div>
 
@@ -51,15 +48,15 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 className={clsx(
-                  'text-sm transition-colors',
-                  isActive(l.href) ? 'text-foreground' : 'text-gray-400 hover:text-foreground'
+                  'font-sans text-sm transition-colors uppercase tracking-widest',
+                  isActive(l.href) ? 'text-primary-container' : 'text-foreground hover:text-primary-container'
                 )}
                 aria-current={isActive(l.href) ? 'page' : undefined}
               >
                 {l.label}
               </Link>
             ))}
-            <MagneticButton href="/work" className="btn-primary" max={14}>
+            <MagneticButton href="/work" className="btn-primary font-mono uppercase tracking-wider text-xs" max={14}>
               View work
             </MagneticButton>
           </div>
@@ -106,10 +103,10 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 className={clsx(
-                  'block rounded-xl px-4 py-2 text-sm transition-colors',
+                  'block rounded-xl px-4 py-2 font-sans text-sm transition-colors uppercase tracking-widest',
                   isActive(l.href)
-                    ? 'bg-white/5 text-foreground border border-white/10'
-                    : 'text-gray-300 hover:bg-white/5 hover:text-foreground'
+                    ? 'bg-surface-bright text-primary-container border border-outline-variant/30'
+                    : 'text-foreground hover:bg-surface-bright/50 hover:text-primary-container'
                 )}
                 aria-current={isActive(l.href) ? 'page' : undefined}
                 onClick={() => setIsOpen(false)}
@@ -118,7 +115,7 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="pt-2">
-              <Link href="/work" className="btn-primary w-full">
+              <Link href="/work" className="btn-primary w-full font-mono uppercase tracking-wider text-xs">
                 View work
               </Link>
             </div>

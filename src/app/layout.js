@@ -1,4 +1,4 @@
-import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -11,7 +11,13 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getAllPosts } from '@/lib/posts';
 import { projects } from '@/lib/projects';
 
-const spaceGrotesk = Space_Grotesk({
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const hankenGrotesk = Hanken_Grotesk({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
@@ -24,8 +30,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: 'GSAP Portfolio',
-  description: 'Crafting Digital Vibes - GSAP Portfolio Test',
+  title: 'Ava Chen Portfolio',
+  description: 'Editorial Portfolio for Ava Chen',
 };
 
 export default function RootLayout({ children }) {
@@ -36,7 +42,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${hankenGrotesk.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} antialiased`}
         suppressHydrationWarning
       >
         <GSAPProvider>
