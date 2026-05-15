@@ -13,7 +13,7 @@ export default function BentoCapabilities() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[280px] md:auto-rows-[320px]">
         
         {/* Large item */}
-        <div className="md:col-span-2 card p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group" data-reveal>
+        <div className="md:col-span-2 card card-hover p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group" data-reveal>
           <div className="absolute inset-0 bg-gradient-to-br from-primary-container/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative z-10">
             <div className="w-14 h-14 rounded-full bg-surface-bright/20 flex items-center justify-center mb-6 border border-outline-variant/30 text-2xl">
@@ -27,7 +27,7 @@ export default function BentoCapabilities() {
         </div>
 
         {/* Tall item */}
-        <div className="md:row-span-2 card p-8 md:p-10 flex flex-col relative overflow-hidden group" data-reveal>
+        <div className="md:row-span-2 card card-hover p-8 md:p-10 flex flex-col relative overflow-hidden group" data-reveal>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-container/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="relative z-10 flex-1 flex flex-col">
             <div className="w-14 h-14 rounded-full bg-surface-bright/20 flex items-center justify-center mb-6 border border-outline-variant/30 text-2xl">
@@ -48,7 +48,7 @@ export default function BentoCapabilities() {
         </div>
 
         {/* Regular item 1 */}
-        <div className="card p-8 md:p-10 flex flex-col justify-between group relative overflow-hidden" data-reveal>
+        <div className="card card-hover p-8 md:p-10 flex flex-col justify-between group relative overflow-hidden" data-reveal>
           <div className="relative z-10">
             <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-3 tracking-tight">UI Engineering</h3>
             <p className="font-sans text-on-surface-variant text-sm md:text-base leading-relaxed">Reusable design systems, thoughtful interaction states, and highly predictable state management using React.</p>
@@ -59,7 +59,7 @@ export default function BentoCapabilities() {
         </div>
 
         {/* Regular item 2 */}
-        <div className="card p-8 md:p-10 flex flex-col justify-between group overflow-hidden relative" data-reveal>
+        <div className="card card-hover p-8 md:p-10 flex flex-col justify-between group overflow-hidden relative" data-reveal>
           <div className="absolute -right-12 -bottom-12 w-48 h-48 bg-primary-container/20 blur-[60px] rounded-full group-hover:bg-primary-container/30 transition-colors duration-700" />
           <div className="relative z-10">
             <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-3 tracking-tight">Accessibility First</h3>
