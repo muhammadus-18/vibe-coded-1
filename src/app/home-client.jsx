@@ -19,17 +19,28 @@ export default function Home({ posts }) {
     const reduceMotion =
       window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
 
-    // Stagger animation for hero content (h1, p, button)
+    // Stagger animation for hero content
     if (heroContent.current) {
-      const elements = heroContent.current.children;
-      gsap.fromTo(elements, { y: 24, opacity: 0 }, {
+      const texts = heroContent.current.querySelectorAll('[data-hero-text]');
+      const others = Array.from(heroContent.current.children).filter(child => !child.querySelector('[data-hero-text]'));
+      
+      const tl = gsap.timeline();
+      
+      tl.fromTo(texts, { y: '100%', opacity: 0 }, {
         y: 0,
         opacity: 1,
-        duration: reduceMotion ? 0 : 0.9,
-        stagger: reduceMotion ? 0 : 0.12,
-        ease: 'power3.out',
-        clearProps: 'transform',
+        duration: 1.2,
+        stagger: 0.15,
+        ease: 'expo.out',
       });
+
+      tl.fromTo(others, { y: 20, opacity: 0 }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power3.out',
+      }, '-=0.8');
     }
 
     // Border radius morphing animation for hero visual
@@ -54,6 +65,15 @@ export default function Home({ posts }) {
         duration: 2,
         ease: 'power1.inOut',
       });
+
+      // Floating animation
+      gsap.to(heroVisual.current, {
+        y: -15,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut'
+      });
     }
   }, []);
 
@@ -68,8 +88,13 @@ export default function Home({ posts }) {
                 <span className="inline-block w-2 h-2 rounded-full bg-primary-container mr-3" />
                 Motion-first UI • Performance-minded • Accessibility-aware
               </p>
-              <h1 className="font-display text-5xl md:text-[80px] font-extrabold text-foreground text-balance tracking-tighter leading-tight uppercase" data-reveal-text>
-                Creative Developer & Designer
+              <h1 className="font-display text-5xl md:text-[80px] font-extrabold text-foreground text-balance tracking-tighter leading-tight uppercase">
+                <span className="block overflow-hidden">
+                  <span className="inline-block" data-hero-text>Creative Developer</span>
+                </span>
+                <span className="block overflow-hidden">
+                  <span className="inline-block" data-hero-text>& Designer</span>
+                </span>
               </h1>
               <p className="font-sans text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed">
                 Blending high-end editorial aesthetics with technical precision. I build digital experiences that prioritize narrative, intentional asymmetry, and sophisticated interactions.

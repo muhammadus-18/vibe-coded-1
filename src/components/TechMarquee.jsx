@@ -11,14 +11,14 @@ export default function TechMarquee() {
   const duplicatedTech = [...techStack, ...techStack, ...techStack];
 
   return (
-    <section className="py-16 md:py-20 border-y border-white/5 overflow-hidden bg-black/20">
+    <section className="py-16 md:py-20 border-y border-outline-variant/30 overflow-hidden bg-surface-bright/10">
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-33.33%); }
         }
         .animate-marquee-infinite {
-          animation: marquee 40s linear infinite;
+          animation: marquee 60s linear infinite;
         }
       `}</style>
       
@@ -30,10 +30,10 @@ export default function TechMarquee() {
         <div className="flex animate-marquee-infinite whitespace-nowrap w-max">
           {duplicatedTech.map((tech, i) => (
             <div key={i} className="flex items-center">
-              <span className="mx-8 md:mx-12 text-3xl md:text-5xl font-bold text-white/15 uppercase tracking-widest hover:text-white/60 transition-colors duration-500">
+              <span className="mx-8 md:mx-12 font-display text-3xl md:text-5xl font-bold text-on-surface/10 uppercase tracking-[0.2em] hover:text-primary transition-colors duration-500">
                 {tech}
               </span>
-              <span className="w-2 h-2 rounded-full bg-accent-500/40" />
+              <span className="w-2 h-2 rounded-full bg-primary-container/30" />
             </div>
           ))}
         </div>

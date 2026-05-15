@@ -25,29 +25,29 @@ export default function ExperienceTimeline() {
   return (
     <section className="container-page py-16 md:py-24">
       <div className="mb-16" data-reveal>
-        <h2 className="text-3xl md:text-5xl font-semibold text-foreground tracking-tight">Experience & Journey</h2>
-        <p className="text-gray-400 mt-4 max-w-2xl text-lg text-balance">
+        <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground tracking-tight">Experience & Journey</h2>
+        <p className="font-sans text-on-surface-variant mt-4 max-w-2xl text-lg leading-relaxed text-balance">
           A track record of building scalable products, collaborating with ambitious teams, and delivering high-quality user experiences.
         </p>
       </div>
 
-      <div className="relative border-l border-white/10 ml-4 md:ml-6 space-y-16 pb-8">
+      <div className="relative border-l border-outline-variant/30 ml-4 md:ml-6 space-y-16 pb-8">
         {experiences.map((exp, i) => (
           <div key={i} className="relative pl-8 md:pl-16 group" data-reveal>
             {/* Timeline Dot */}
-            <div className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-background border-2 border-white/20 group-hover:border-accent-500 group-hover:bg-accent-500 transition-colors duration-300" />
+            <div className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-background border-2 border-outline-variant/30 group-hover:border-primary-container group-hover:bg-primary-container transition-colors duration-300" />
             
             <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-4">
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground">{exp.role}</h3>
-              <span className="text-gray-600 hidden md:inline-block">/</span>
-              <span className="text-accent-400 font-mono">{exp.company}</span>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-tight">{exp.role}</h3>
+              <span className="text-outline-variant hidden md:inline-block">/</span>
+              <span className="text-primary font-mono">{exp.company}</span>
             </div>
             
-            <div className="inline-block px-3 py-1 mb-4 rounded-full bg-white/5 text-xs font-mono tracking-widest text-gray-400 border border-white/10">
+            <div className="inline-block px-3 py-1 mb-4 rounded-xl bg-surface-bright/20 text-[10px] font-mono uppercase tracking-[0.2em] text-on-surface-variant border border-outline-variant/30">
               {exp.year}
             </div>
             
-            <p className="text-gray-400 leading-relaxed max-w-3xl text-lg text-balance">
+            <p className="font-sans text-on-surface-variant leading-relaxed max-w-3xl text-lg text-balance">
               {exp.desc}
             </p>
           </div>

@@ -6,6 +6,8 @@ import GSAPProvider from '@/components/GSAPProvider';
 import MotionProvider from '@/components/MotionProvider';
 import SmoothScroll from '@/components/SmoothScroll';
 import CommandMenu from '@/components/CommandMenu';
+import CustomCursor from '@/components/CustomCursor';
+import Grain from '@/components/Grain';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getAllPosts } from '@/lib/posts';
@@ -30,8 +32,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: 'Ava Chen Portfolio',
-  description: 'Editorial Portfolio for Ava Chen',
+  title: 'Editorial Portfolio',
+  description: 'Premium Editorial Portfolio',
 };
 
 export default function RootLayout({ children }) {
@@ -57,6 +59,8 @@ export default function RootLayout({ children }) {
             <Navbar />
             <main id="main">{children}</main>
             <Footer />
+            <CustomCursor />
+            <Grain />
             <CommandMenu dynamicPosts={posts} dynamicProjects={minimalProjects} />
             <Analytics />
             <SpeedInsights />

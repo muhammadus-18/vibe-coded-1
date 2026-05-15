@@ -5,39 +5,39 @@
 @tailwind utilities;
 
 :root {
-  --background: #121414;
-  --foreground: #e3e2e2;
-  --surface: #121414;
-  --surface-dim: #121414;
-  --surface-bright: #383939;
-  --surface-container-lowest: #0d0e0f;
-  --surface-container-low: #1b1c1c;
-  --surface-container: #1f2020;
-  --surface-container-high: #292a2a;
-  --surface-container-highest: #343535;
-  --on-surface: #e3e2e2;
-  --on-surface-variant: #e1bfb5;
-  --inverse-surface: #e3e2e2;
-  --inverse-on-surface: #303031;
-  --outline: #a98a80;
-  --outline-variant: #594139;
-  --surface-tint: #ffb59d;
-  --primary: #ffb59d;
-  --on-primary: #5d1900;
-  --primary-container: #ff6b35;
-  --on-primary-container: #5f1900;
-  --inverse-primary: #ab3500;
-  --secondary: #c6c6c7;
-  --on-secondary: #2f3131;
-  --secondary-container: #454747;
-  --on-secondary-container: #b4b5b5;
-  --tertiary: #59d5fb;
-  --on-tertiary: #003543;
-  --tertiary-container: #00a7cb;
-  --on-tertiary-container: #003744;
-  --accent: 255, 107, 53; /* #ff6b35 rgb for --accent usage */
-  --accent2: 255, 181, 157; /* #ffb59d rgb */
-  --ink: 18, 20, 20; /* #121414 rgb */
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --surface: #121212;
+  --surface-dim: #0F0F0F;
+  --surface-bright: #1A1A1A;
+  --surface-container-lowest: #050505;
+  --surface-container-low: #0D0D0D;
+  --surface-container: #121212;
+  --surface-container-high: #181818;
+  --surface-container-highest: #222222;
+  --on-surface: #F2F2F2;
+  --on-surface-variant: #808080;
+  --inverse-surface: #F2F2F2;
+  --inverse-on-surface: #121212;
+  --outline: #404040;
+  --outline-variant: #2A2A2A;
+  --surface-tint: #FF6B35;
+  --primary: #FFB59D;
+  --on-primary: #3D1000;
+  --primary-container: #FF6B35;
+  --on-primary-container: #FFFFFF;
+  --inverse-primary: #FF6B35;
+  --secondary: #E0E0E0;
+  --on-secondary: #1A1A1A;
+  --secondary-container: #333333;
+  --on-secondary-container: #E0E0E0;
+  --tertiary: #A0A0A0;
+  --on-tertiary: #0A0A0A;
+  --tertiary-container: #2A2A2A;
+  --on-tertiary-container: #FFFFFF;
+  --accent: 255, 107, 53; /* #FF6B35 rgb */
+  --accent2: 255, 181, 157; /* #FFB59D rgb */
+  --ink: 18, 18, 18; /* #121212 rgb */
 }
 
 body {
@@ -69,11 +69,12 @@ body::after {
   pointer-events: none;
   z-index: 0;
   background:
+    radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(var(--accent), 0.1), transparent 40%),
     radial-gradient(900px 520px at 70% -10%, rgba(var(--accent), 0.22), transparent 62%),
     radial-gradient(720px 460px at 15% 10%, rgba(var(--accent2), 0.16), transparent 58%),
     linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: auto, auto, 64px 64px, 64px 64px;
+  background-size: auto, auto, auto, 64px 64px, 64px 64px;
   background-position: center, center, center, center;
   opacity: 0.9;
 }
@@ -105,17 +106,39 @@ main, nav, footer, .relative, .absolute, .fixed {
   }
 
   .card {
-    @apply backdrop-blur-[20px] rounded-[12px];
+    @apply backdrop-blur-[20px] rounded-[12px] relative overflow-hidden;
     background-color: rgba(var(--ink), 0.6);
     box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.05);
   }
 
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 40%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .card:hover::after {
+    opacity: 1;
+  }
+
   .card-hover {
-    @apply transition-all duration-300 will-change-transform;
+    @apply transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-transform;
   }
   .card-hover:hover {
-    transform: scale(1.02);
-    box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.05), 0 0 20px rgba(var(--accent), 0.1);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 
+      inset 1px 1px 0px rgba(255, 255, 255, 0.08), 
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(var(--accent), 0.1);
   }
 
   .muted {
@@ -123,11 +146,11 @@ main, nav, footer, .relative, .absolute, .fixed {
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-3xl px-5 py-3 text-sm font-medium transition-all duration-300;
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium transition-all duration-300;
   }
 
   .btn-primary {
-    @apply btn text-background;
+    @apply btn text-background font-mono uppercase tracking-widest;
     background: var(--primary-container);
   }
   .btn-primary:hover {
@@ -136,12 +159,12 @@ main, nav, footer, .relative, .absolute, .fixed {
   }
 
   .btn-ghost {
-    @apply btn bg-transparent text-foreground hover:bg-white/5;
+    @apply btn bg-transparent text-foreground hover:bg-white/5 font-mono uppercase tracking-widest;
     border: 1px solid var(--outline-variant);
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gray-300;
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-on-surface-variant font-mono;
   }
 
   .reveal-text {
@@ -154,7 +177,12 @@ main, nav, footer, .relative, .absolute, .fixed {
   }
 
   .headline {
-    @apply font-semibold tracking-tight text-foreground;
+    @apply font-display font-bold text-foreground;
+    letter-spacing: -0.04em;
+  }
+
+  .section-gap {
+    @apply py-24 md:py-40;
   }
 
   .text-balance {

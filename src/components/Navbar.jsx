@@ -37,7 +37,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="font-display text-2xl font-bold tracking-tight text-foreground">
-              Ava Chen
+              Editorial
             </Link>
           </div>
 
