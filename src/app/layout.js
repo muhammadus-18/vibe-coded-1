@@ -6,7 +6,7 @@ import GSAPProvider from '@/components/GSAPProvider';
 import MotionProvider from '@/components/MotionProvider';
 import SmoothScroll from '@/components/SmoothScroll';
 import CommandMenu from '@/components/CommandMenu';
-import CustomCursor from '@/components/CustomCursor';
+
 import Grain from '@/components/Grain';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             <main id="main">{children}</main>
             <Footer />
-            <CustomCursor />
+
             <Grain />
             <CommandMenu dynamicPosts={posts} dynamicProjects={minimalProjects} />
             <Analytics />
