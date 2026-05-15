@@ -8,6 +8,7 @@ import SmoothScroll from '@/components/SmoothScroll';
 import CommandMenu from '@/components/CommandMenu';
 
 import Grain from '@/components/Grain';
+import PageProgress from '@/components/PageProgress';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { getAllPosts } from '@/lib/posts';
@@ -57,6 +58,7 @@ export default function RootLayout({ children }) {
               Skip to content
             </a>
             <Navbar />
+            <PageProgress />
             <main id="main">{children}</main>
             <Footer />
 

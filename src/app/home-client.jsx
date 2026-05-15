@@ -10,6 +10,8 @@ import ExperienceTimeline from '@/components/ExperienceTimeline';
 import TechMarquee from '@/components/TechMarquee';
 import ImpactStats from '@/components/ImpactStats';
 import FeaturedInsights from '@/components/FeaturedInsights';
+import RevealText from '@/components/RevealText';
+import HorizontalScroll from '@/components/HorizontalScroll';
 
 export default function Home({ posts }) {
   const heroVisual = useRef(null);
@@ -19,31 +21,7 @@ export default function Home({ posts }) {
     const reduceMotion =
       window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
 
-    // Stagger animation for hero content
-    if (heroContent.current) {
-      const texts = heroContent.current.querySelectorAll('[data-hero-text]');
-      const others = Array.from(heroContent.current.children).filter(child => !child.querySelector('[data-hero-text]'));
-      
-      const tl = gsap.timeline();
-      
-      tl.fromTo(texts, { y: '100%', opacity: 0 }, {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: 'expo.out',
-      });
-
-      tl.fromTo(others, { y: 20, opacity: 0 }, {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-      }, '-=0.8');
-    }
-
-    // Border radius morphing animation for hero visual
+    // Stagger animation for hero visual elements
     if (!reduceMotion && heroVisual.current) {
       const tl = gsap.timeline({
         repeat: -1,
@@ -52,27 +30,22 @@ export default function Home({ posts }) {
 
       tl.to(heroVisual.current, {
         borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-        duration: 2,
+        duration: 4,
         ease: 'power1.inOut',
       })
       .to(heroVisual.current, {
         borderRadius: '70% 30% 30% 70% / 30% 70% 70% 30%',
-        duration: 2,
-        ease: 'power1.inOut',
-      })
-      .to(heroVisual.current, {
-        borderRadius: '50% 50% 50% 50% / 50% 50% 50% 50%',
-        duration: 2,
+        duration: 4,
         ease: 'power1.inOut',
       });
 
       // Floating animation
       gsap.to(heroVisual.current, {
-        y: -15,
+        y: -20,
         duration: 3,
         repeat: -1,
         yoyo: true,
-        ease: 'power1.inOut'
+        ease: 'sine.inOut'
       });
     }
   }, []);
@@ -80,51 +53,59 @@ export default function Home({ posts }) {
   return (
     <div className="bg-background">
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="container-page py-40">
+      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+        <div className="container-page py-24 md:py-40">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-16 items-center">
-            <div ref={heroContent} className="lg:col-start-2 lg:col-span-5 space-y-8" data-reveal>
-              <p className="font-mono text-xs uppercase tracking-widest text-on-surface-variant">
-                <span className="inline-block w-2 h-2 rounded-full bg-primary-container mr-3" />
-                Motion-first UI • Performance-minded • Accessibility-aware
-              </p>
-              <h1 className="font-display text-5xl md:text-[80px] font-extrabold text-foreground text-balance tracking-tighter leading-tight uppercase">
-                <span className="block overflow-hidden">
-                  <span className="inline-block" data-hero-text>Creative Developer</span>
-                </span>
-                <span className="block overflow-hidden">
-                  <span className="inline-block" data-hero-text>& Designer</span>
-                </span>
-              </h1>
-              <p className="font-sans text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed">
-                Blending high-end editorial aesthetics with technical precision. I build digital experiences that prioritize narrative, intentional asymmetry, and sophisticated interactions.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <MagneticButton href="/work" className="btn-primary font-mono uppercase tracking-wider text-xs">
-                  Explore work
-                </MagneticButton>
-                <MagneticButton href="/services" className="btn-ghost font-mono uppercase tracking-wider text-xs" max={14}>
-                  What I do
-                </MagneticButton>
+            <div ref={heroContent} className="lg:col-start-1 lg:col-span-7 space-y-10">
+              <div className="overflow-hidden">
+                <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary-container animate-pulse">
+                  Available for Q3/Q4 2026
+                </p>
               </div>
-              <div className="pt-8 flex flex-wrap gap-2">
-                {['Next.js', 'GSAP', 'Design Systems', 'Performance'].map((t) => (
-                  <span key={t} className="font-mono px-3 py-1.5 bg-surface-bright/20 text-on-surface border border-outline-variant/30 rounded-xl text-[11px] uppercase tracking-wider">
-                    {t}
-                  </span>
-                ))}
+              
+              <h1 className="font-display text-6xl md:text-[110px] font-extrabold text-foreground tracking-tighter leading-[0.85] uppercase">
+                <RevealText speed={1.2}>Creative</RevealText>
+                <RevealText speed={1.2} delay={0.1}>Developer</RevealText>
+                <span className="text-primary-container italic font-light">&</span>
+                <RevealText speed={1.2} delay={0.2}>Designer</RevealText>
+              </h1>
+
+              <div className="max-w-xl space-y-6">
+                <p className="font-sans text-xl md:text-2xl text-on-surface-variant leading-relaxed text-balance">
+                  Crafting high-end editorial experiences where technical precision meets artistic narrative. 
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                  <MagneticButton href="/work" className="btn-primary px-8 py-4 text-[11px]">
+                    Explore Portfolio
+                  </MagneticButton>
+                  <MagneticButton href="/services" className="btn-ghost px-8 py-4 text-[11px]">
+                    Capabilities
+                  </MagneticButton>
+                </div>
               </div>
             </div>
 
-            <div className="lg:col-start-8 lg:col-span-5 flex items-center justify-center" data-reveal data-reveal-from="right" data-reveal-delay="0.05">
-              <div
-                ref={heroVisual}
-                id="hero-visual"
-                className="relative w-72 h-72 sm:w-96 sm:h-96 bg-surface-bright rounded-[12px] shadow-glowStrong overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,107,53,0.35),transparent_55%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_75%,rgba(0,0,0,0.8),transparent_60%)]" />
-                <div className="absolute inset-0 border-[1px] border-white/5 rounded-[12px] pointer-events-none" />
+            <div className="lg:col-start-9 lg:col-span-4 flex items-center justify-center">
+              <div className="relative group">
+                <div
+                  ref={heroVisual}
+                  className="relative w-80 h-80 sm:w-[450px] sm:h-[450px] bg-surface-bright rounded-[120px] shadow-2xl overflow-hidden transition-all duration-1000 group-hover:scale-105"
+                >
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,107,53,0.4),transparent_55%)] animate-pulse" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_75%,rgba(0,0,0,0.6),transparent_60%)]" />
+                  <div className="absolute inset-0 border border-white/10 rounded-inherit pointer-events-none" />
+                  
+                  {/* Decorative lines */}
+                  <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5 -rotate-45" />
+                  <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5 rotate-45" />
+                </div>
+                
+                {/* Floating badge */}
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-background border border-outline-variant/30 rounded-full flex items-center justify-center p-4 shadow-xl animate-spin-slow">
+                  <p className="font-mono text-[8px] uppercase tracking-widest text-center">
+                    Fullstack • Motion • Design • 2026
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -133,48 +114,24 @@ export default function Home({ posts }) {
 
       <TechMarquee />
 
-      {/* Featured Projects */}
-      <section className="container-page py-40">
-        <div className="flex items-end justify-between gap-6 mb-16" data-reveal>
-          <div className="lg:col-start-2 lg:col-span-8">
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground tracking-tight">Featured projects</h2>
-            <p className="font-sans text-on-surface-variant mt-4 text-lg">A few recent builds with crisp UX and disciplined motion.</p>
-          </div>
-          <Link href="/work" className="hidden sm:inline-flex font-mono text-sm text-primary hover:text-primary-container transition-colors tracking-widest uppercase">
-            View all →
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 lg:px-12">
-          {projects.slice(0, 4).map((p) => (
-            <Link key={p.id} href={`/work/${p.id}`} className="card card-hover overflow-hidden group block" data-reveal>
-              <div className="relative aspect-video p-5">
-                <div className="absolute inset-0 bg-surface-bright/40" />
-                <div className="relative w-full h-full rounded-[12px] bg-background/50 border border-outline-variant/20 overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,107,53,0.1),transparent_70%)]" />
-                </div>
-              </div>
-              <div className="p-8 pt-4">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors tracking-tight">
-                    {p.title}
-                  </h3>
-                  <span className="font-mono text-xs text-on-surface-variant bg-surface-bright/50 px-2 py-1 rounded-md group-hover:text-primary transition-colors">
-                    {p.tags[0] || 'Web'}
-                  </span>
-                </div>
-                <p className="font-sans text-on-surface-variant mt-4 leading-relaxed">{p.description}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {p.tags.slice(1, 4).map((t) => (
-                    <span key={t} className="font-mono px-2 py-1 text-on-surface-variant/70 border border-outline-variant/30 rounded-md text-[11px] uppercase tracking-wider">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
+      {/* Featured Projects - Horizontal Scroll */}
+      <section className="py-24 md:py-40 border-t border-outline-variant/20">
+        <div className="container-page mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="max-w-2xl">
+              <h2 className="font-display text-5xl md:text-7xl font-bold text-foreground tracking-tighter uppercase leading-none">
+                <RevealText>Selected</RevealText>
+                <RevealText delay={0.1}>Narratives</RevealText>
+              </h2>
+              <p className="font-sans text-on-surface-variant mt-6 text-xl leading-relaxed">A curated collection of digital architecture and visual storytelling.</p>
+            </div>
+            <Link href="/work" className="font-mono text-sm text-primary hover:text-primary-container transition-all hover:tracking-[0.2em] uppercase tracking-widest">
+              Explore All Works →
             </Link>
-          ))}
+          </div>
         </div>
+        
+        <HorizontalScroll projects={projects.slice(0, 5)} />
       </section>
 
       <ImpactStats />
@@ -182,22 +139,24 @@ export default function Home({ posts }) {
       <ExperienceTimeline />
       <FeaturedInsights posts={posts} />
 
-      {/* Contact */}
+      {/* Final Call to Action */}
       <section className="container-page py-40">
-        <div className="card p-10 md:p-16 lg:mx-12" data-reveal>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
-            <div className="max-w-xl">
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground tracking-tight">Let’s build something great.</h2>
-              <p className="font-sans text-on-surface-variant mt-6 text-lg leading-relaxed">
-                If you like this style of work, I’m available for freelance projects and collaborations.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <MagneticButton className="btn-primary font-mono uppercase tracking-wider text-xs" href="mailto:hello@example.com" max={16}>
-                Email me
+        <div className="card p-12 md:p-24 lg:mx-12 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,107,53,0.05),transparent_70%)]" />
+          <div className="relative z-10 space-y-10">
+            <h2 className="font-display text-5xl md:text-8xl font-bold text-foreground tracking-tighter uppercase leading-none">
+              Ready for the<br/>
+              <span className="text-primary-container">Next Level?</span>
+            </h2>
+            <p className="font-sans text-on-surface-variant text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed">
+              Currently accepting new projects for Q4 2026. Let's build a digital experience that resonates.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
+              <MagneticButton className="btn-primary px-10 py-5 text-[11px]" href="mailto:hello@example.com">
+                Inquire Project
               </MagneticButton>
-              <MagneticButton className="btn-ghost font-mono uppercase tracking-wider text-xs" href="/work" max={14}>
-                See case studies
+              <MagneticButton className="btn-ghost px-10 py-5 text-[11px]" href="/work">
+                View Archive
               </MagneticButton>
             </div>
           </div>
